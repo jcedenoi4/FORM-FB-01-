@@ -1,0 +1,98 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{lmodern}
+\usepackage{geometry}
+\geometry{margin=2.3cm}
+\usepackage{setspace}
+\setstretch{1.08}
+\usepackage{microtype}
+\usepackage{csquotes}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue,citecolor=black}
+\usepackage[backend=biber,style=ieee,sorting=none]{biblatex}
+\addbibresource{referencias.bib}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\newcommand{\dato}[1]{\textbf{Dato concreto y ubicación:} #1}
+\newcommand{\nota}[1]{\textbf{Aporte para el trabajo:} #1}
+\newcommand{\resumen}[1]{\textbf{Síntesis del documento:} #1}
+\begin{document}
+	\begin{center}
+		{\Large\textbf{UNIVERSIDAD TÉCNICA ESTATAL DE QUEVEDO}}\\[4pt]
+		{\large\textbf{FORM-FB-01 - Fichas bibliográficas}}\\
+		\textbf{Fundamentos de sistemas distribuidos y arquitecturas distribuidas}\\[8pt]
+	\end{center}
+	\textbf{Tema de búsqueda:} Arquitecturas de microservicios, migración desde monolitos, evolución y seguridad.
+	
+	\section*{Introducción}
+	En esta actividad busqué información académica para comprender mejor cómo funcionan los sistemas distribuidos y qué dificultades aparecen cuando una aplicación se organiza mediante microservicios. Me interesó especialmente conocer cómo se separan las responsabilidades de un sistema, qué implica migrar desde una arquitectura monolítica y cuáles son los desafíos de mantenimiento y seguridad que surgen cuando los servicios se comunican a través de una red.
+	
+	Para elaborar mis fichas seleccioné cinco artículos publicados entre 2021 y 2024 que abordan estos temas desde diferentes enfoques. En cada ficha incluí la referencia bibliográfica en formato IEEE, una síntesis del estudio, un dato concreto con su ubicación y una nota en la que explico qué aprendí y cómo puedo utilizar esa fuente. Con esta revisión quiero reunir una base bibliográfica útil para mi informe individual TA-IND-01, donde analizaré un sistema distribuido real, sus decisiones de arquitectura, sus ventajas y sus limitaciones.
+	
+	\section*{Ficha bibliográfica 1. Descomposición de aplicaciones monolíticas}
+	\textbf{Referencia IEEE:} \fullcite{abgaz2023decomposition}
+	
+	\textbf{DOI verificado:} \href{https://doi.org/10.1109/TSE.2023.3287297}{10.1109/TSE.2023.3287297}.\par
+	
+	\resumen{La descomposición de aplicaciones monolíticas plantea dificultades cuando sus componentes están muy relacionados. Abgaz y colaboradores estudian este problema mediante una revisión sistemática de investigaciones y búsqueda adicional por referencias. Analizan 35 trabajos y proponen el marco M2MDF para organizar las fases de la separación en microservicios. También examinan métodos, herramientas y criterios de evaluación. Concluyen que todavía faltan métricas compartidas y herramientas que integren información del código, su ejecución y su evolución para apoyar decisiones de migración mejor fundamentadas.}
+	
+	\dato{La revisión partió de 5.022 resultados, seleccionó 33 artículos tras cuatro filtros y llegó a 35 después de la búsqueda por referencias. Ubicación: p. 4214, sección I (Introducción); el marco M2MDF se desarrolla en la sección IV.}
+	
+	\nota{Con esta fuente puedo comprender mejor las etapas necesarias para dividir un sistema monolítico en servicios. El marco M2MDF me sirve como referencia para explicar que primero se debe analizar el sistema, reconocer sus límites funcionales, evaluar los servicios propuestos y planificar su despliegue. Así se evita separar módulos sin tener en cuenta su función dentro de la arquitectura. En TA-IND-01 la utilizaré para analizar la división de responsabilidades y los límites de los componentes.}
+	
+	\section*{Ficha bibliográfica 2. Migración sistémica y técnica hacia microservicios}
+	\textbf{Referencia IEEE:} \fullcite{ayas2023empirical}
+	
+	\textbf{DOI verificado:} \href{https://doi.org/10.1007/s10664-023-10308-9}{10.1007/s10664-023-10308-9}.\par
+	
+	\resumen{La migración hacia microservicios requiere cambios técnicos y organizacionales. Ayas y colaboradores investigan cómo ocurre este proceso mediante 19 entrevistas y el análisis de 215 discusiones de Stack Overflow, mediante teoría fundamentada. Identifican dos modos de cambio: uno sistémico, orientado a decisiones estratégicas, y otro técnico, centrado en modificaciones concretas. Sus resultados incluyen 14 actividades y 53 soluciones. El estudio muestra que la migración es gradual y exige coordinar toda la arquitectura con la infraestructura y los equipos de desarrollo.}
+	
+	\dato{Se realizaron 19 entrevistas a ingenieros de 16 empresas y se analizaron 215 publicaciones de Stack Overflow. Los autores identificaron 2 modos de migración, 14 actividades y 53 resultados de solución. Ubicación: resumen (apartados Method y Results) y secciones Methodology y Results (subapartado Overview of Migration Journey).}
+	
+	\nota{Este estudio muestra que adoptar una arquitectura distribuida no consiste únicamente en dividir el código. También hay que considerar la organización, la infraestructura, las pruebas, el monitoreo y la coordinación de los equipos. Esta información me permite presentar la migración como un proceso gradual en el que las decisiones técnicas y organizacionales están relacionadas. En TA-IND-01 la usaré en el análisis de decisiones arquitectónicas y del proceso de adopción.}
+	
+	\section*{Ficha bibliográfica 3. Prácticas industriales y evolución de microservicios}
+	\textbf{Referencia IEEE:} \fullcite{bogner2021industry}
+	
+	\textbf{DOI verificado:} \href{https://doi.org/10.1007/s10664-021-09999-9}{10.1007/s10664-021-09999-9}.\par
+	
+	\resumen{Bogner y colaboradores investigan cómo las empresas mantienen y modifican de forma sus sistemas de microservicios. Realizan 17 entrevistas sobre 14 sistemas de 10 empresas y revisan 295 recursos de profesionales. Encuentran que la autonomía de los servicios necesita equilibrarse con reglas y prácticas compartidas. Destacan los principios arquitectónicos y las pruebas automatizadas. También identifican dificultades para definir límites entre servicios e integrarlos. La investigación señala la necesidad de herramientas y métricas para evaluar las dependencias y la evolución arquitectónica.}
+	
+	\dato{El estudio combina 17 entrevistas en 10 empresas sobre 14 sistemas y una revisión de 295 recursos profesionales de literatura gris. Ubicación: p. 1 del PDF editorial (resumen, apartado Method) y secciones 4, 5 y 6 (discusión de los resultados).}
+	
+	\nota{El valor de este artículo está en que recoge experiencias de empresas que trabajan con microservicios. Puedo relacionar sus resultados con la calidad y el mantenimiento de los sistemas distribuidos, especialmente al explicar que la autonomía de cada servicio necesita reglas de diseño, pruebas y revisión de dependencias. Sin coordinación, la descentralización puede complicar la evolución del sistema. En TA-IND-01 apoyaré con ella el apartado de mantenimiento, evolución y dependencias.}
+	
+	\section*{Ficha bibliográfica 4. Principios, patrones y desafíos de migración}
+	\textbf{Referencia IEEE:} \fullcite{velepucha2023survey}
+	
+	\textbf{DOI verificado:} \href{https://doi.org/10.1109/ACCESS.2023.3305687}{10.1109/ACCESS.2023.3305687}.\par
+	
+	\resumen{Velepucha y Flores revisan los principios de diseño que orientan las arquitecturas de microservicios y su relación con aplicaciones monolíticas. Comparan distintas ideas de modularización y ocultamiento de información con propuestas sobre descomposición de servicios. Además, reúnen patrones arquitectónicos y examinan ventajas, desventajas y dificultades de migración. El artículo permite comprender que dividir un sistema exige definir responsabilidades y dependencias, no solamente crear componentes pequeños. Sus conclusiones ofrecen criterios conceptuales para valorar alternativas de diseño y organización del software distribuido.}
+	
+	\dato{Los autores comparan los principios de Martin Fowler y Sam Newman con el principio de ocultación de información de David Parnas, y reúnen patrones para arquitecturas de microservicios. Ubicación: resumen (Abstract) del artículo, p. 88339; el análisis de principios y patrones se desarrolla en el cuerpo del estudio.}
+	
+	\nota{Este artículo me sirve para explicar los principios de diseño de una arquitectura distribuida basada en microservicios. Sus aportes permiten relacionar la modularidad, el ocultamiento de información y la responsabilidad única con la independencia de los servicios. También me permite comparar la división por funciones de negocio con la modularización y la ocultación de información. La emplearé en TA-IND-01 al examinar los patrones de diseño y la observabilidad del sistema seleccionado.}
+	
+	\section*{Ficha bibliográfica 5. Análisis de vulnerabilidades en microservicios}
+	\textbf{Referencia IEEE:} \fullcite{jayalath2024vulnerability}
+	
+	\textbf{DOI verificado:} \href{https://doi.org/10.1109/ACCESS.2024.3481374}{10.1109/ACCESS.2024.3481374}.\par
+	
+	\resumen{Jayalath y colaboradores analizan vulnerabilidades de seguridad propias de las arquitecturas de microservicios. Revisan 62 estudios e identifican 126 vulnerabilidades, que organizan en una taxonomía. Después realizan pruebas con tres herramientas de escaneo sobre cuatro aplicaciones de referencia y relacionan los hallazgos con su clasificación. Sus resultados muestran riesgos vinculados a los componentes y las interacciones del sistema, y diferencias entre herramientas. El trabajo aporta criterios para reconocer amenazas y orientar evaluaciones de seguridad en aplicaciones distribuidas basadas en microservicios.}
+	
+	\dato{La revisión de 62 estudios identificó 126 vulnerabilidades y la evaluación empírica de cuatro aplicaciones con tres herramientas detectó 1.667 registros de vulnerabilidad (618, 128, 477 y 444, respectivamente). Ubicación: resumen, p. 155168 (62 estudios y 126 vulnerabilidades); sección V, tabla 5 y pp. 155193--155194 (resultados de escaneo).}
+	
+	\nota{Con este artículo puedo abordar la seguridad como una parte esencial de los sistemas distribuidos. Cada servicio, interfaz y dependencia puede representar un punto de riesgo; por eso, resulta importante realizar análisis automatizados, mantener los componentes actualizados y supervisar continuamente la arquitectura. En TA-IND-01 la utilizaré en el análisis de riesgos, comunicación entre servicios y medidas de seguridad.}
+	
+	\section*{Declaración de uso de inteligencia artificial}
+	Durante la elaboración de esta actividad utilicé ChatGPT de OpenAI (modelo GPT-6, utilizado durante la elaboración de la actividad del 6 al 8 de noviembre de 2026) como apoyo para orientarme en la búsqueda de artículos académicos, aclarar términos técnicos y resolver dudas sobre el uso de LaTeX, BibLaTeX y los comandos de compilación. También lo consulté para revisar ortografía, mejorar la claridad del texto y valorar propuestas de organización y redacción.
+	
+	La herramienta proporcionó sugerencias y borradores para algunas partes del documento, incluidas la introducción, las síntesis y las notas de las fichas. Por eso no considero sus respuestas como fuentes académicas ni presento su participación como una simple corrección ortográfica. Los datos bibliográficos y técnicos se contrastaron con los cinco artículos originales en PDF, revisando portadas, resúmenes, secciones y tablas para comprobar autores, títulos, DOI, métodos y cifras. Las referencias remiten a esos artículos, y cada ficha señala dónde aparece su dato concreto.
+	
+	
+	
+	\printbibliography[title={Referencias bibliográficas}]
+\end{document}
