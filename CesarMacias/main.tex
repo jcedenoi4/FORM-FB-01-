@@ -1,1 +1,61 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[backend=biber,style=ieee]{biblatex}
+\usepackage[hidelinks]{hyperref}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
 
+\addbibresource{referencias.bib}
+
+\title{FORM-FB-01: Fichas bibliográficas sobre Sistemas Distribuidos y Microservicios}
+\author{Cesar Abrahan Macias Vasquez \\ Universidad Técnica Estatal de Quevedo (UTEQ)}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Declaración de uso de Inteligencia Artificial}
+Para la fase de búsqueda bibliográfica utilicé un asistente de IA (Gemini) como motor de búsqueda para localizar artículos recientes, de acceso abierto e indexados, y para generar el formato base en LaTeX y BibTeX. Posteriormente, ingresé manualmente a los enlaces DOI e ISBN para verificar la existencia de los documentos, validar los números de página de las citas y asegurar que no fueran referencias inventadas. La redacción de los resúmenes reflexivos, las notas personales y la conexión de estas fuentes con el informe TA-IND-01 son de mi autoría.
+
+\section*{Fichas Bibliográficas}
+
+\subsection*{Ficha 1}
+\textbf{Referencia:} \fullcite{blinowski2022monolithic}. \\
+\textbf{DOI verificado:} \url{https://doi.org/10.1109/ACCESS.2022.3152803} \\
+\textbf{Resumen:} Este artículo me pareció muy útil porque hace una comparación directa para saber cuándo realmente vale la pena usar microservicios. Los autores programaron una aplicación de prueba en ambas arquitecturas y las sometieron a diferentes cargas de usuarios. Lo que descubrieron es bastante práctico: si tienes pocos usuarios, el monolito responde más rápido porque no hay retrasos por la red; pero cuando la carga sube de golpe, los microservicios escalan mucho mejor sin que el sistema colapse. \\
+\textbf{Dato concreto:} En la evaluación de un solo nodo, la arquitectura monolítica llega a ser hasta un 40\% más rápida para cargas bajas, pero bajo alto estrés los microservicios escalan de forma lineal sin colapsar (Sección V. Evaluación de Resultados, p. 20365). \\
+\textbf{Nota personal:} Voy a usar esta fuente en mi informe de la próxima semana para justificar por qué el sistema distribuido que elegí prefirió "pagar el precio" de la latencia de red a cambio de no caerse cuando hay picos masivos de tráfico.
+
+\subsection*{Ficha 2}
+\textbf{Referencia:} \fullcite{alelyani2024optimizing}. \\
+\textbf{DOI verificado:} \url{https://doi.org/10.1109/ACCESS.2024.3373316} \\
+\textbf{Resumen:} Aquí los autores intentan resolver un dolor de cabeza muy común en la nube: el exceso de tráfico y las caídas cuando tienes muchos microservicios comunicándose entre sí. Proponen un algoritmo nuevo usando teoría de grafos para asignar los recursos. Al simularlo, demostraron que su idea supera al clásico algoritmo Round-Robin, bajando bastante la congestión de la red y haciendo que el sistema aguante mejor si un servidor se apaga repentinamente. \\
+\textbf{Dato concreto:} La estrategia propuesta logró reducir el tráfico de red interno en un 18\% y elevó la tasa de tolerancia a fallos en un 12\% al compararse con el algoritmo Round-Robin predeterminado (Sección IV. Performance Evaluation, p. 35142). \\
+\textbf{Nota personal:} Me sirve muchísimo para la parte de tolerancia a fallos del TA-IND-01. Quiero aplicar este concepto para analizar cómo el sistema de mi caso de estudio logra mantenerse operativo aunque se le caiga uno de sus nodos.
+
+\subsection*{Ficha 3}
+\textbf{Referencia:} \fullcite{sharma2024gridappsd}. \\
+\textbf{DOI verificado:} \url{https://doi.org/10.1109/ACCESS.2024.3374331} \\
+\textbf{Resumen:} Elegí este artículo para salir un poco de las típicas apps web y ver algo más industrial. Trata sobre GridAPPS-D, una arquitectura distribuida real usada para controlar redes eléctricas. Me llamó la atención que proponen mover el control directamente a los nodos físicos en lugar de centralizarlo. Así, si una parte del sistema falla, el resto de la red eléctrica puede seguir funcionando porque comparten información mediante una API estándar en lugar de depender de un solo cerebro central. \\
+\textbf{Dato concreto:} La arquitectura estandariza el intercambio de mensajes utilizando el "Common Information Model (CIM)" del estándar IEC 61970/61968, permitiendo que múltiples aplicaciones distribuidas operen simultáneamente (Sección III. Architecture Design, p. 39865). \\
+\textbf{Nota personal:} Lo incluiré en mi informe para demostrar que los sistemas distribuidos son vitales en infraestructuras críticas (como la electricidad) justamente para evitar el temido "punto único de fallo".
+
+\subsection*{Ficha 4}
+\textbf{Referencia:} \fullcite{ghosh2023distributed}. \\
+\textbf{DOI/ISBN verificado:} \url{https://doi.org/10.1002/9781119825968} (ISBN: 978-1-119-82593-7) \\
+\textbf{Resumen:} Este libro es súper completo y me ayudó a entender la teoría dura detrás del código. Los autores explican desde los problemas clásicos de sincronización de tiempos hasta cómo funciona la orquestación en la nube actual. Le dedican buena parte a explicar matemáticamente por qué las bases de datos distribuidas nunca pueden ser perfectas en todo al mismo tiempo (el famoso Teorema CAP) y cómo tolerar fallos sin que los datos se corrompan. \\
+\textbf{Dato concreto:} En el estudio de la sincronización temporal, detalla cómo el uso de relojes lógicos (como los de Lamport) constituye el único método determinista para mantener el orden parcial en sistemas sin estado global (Capítulo 5, p. 91). \\
+\textbf{Nota personal:} Esta va a ser mi fuente principal para el marco teórico. Necesito basarme en este libro para citar correctamente el Teorema CAP y explicar las limitaciones teóricas que tiene el sistema que voy a analizar.
+
+\subsection*{Ficha 5}
+\textbf{Referencia:} \fullcite{ford2021software}. \\
+\textbf{ISBN verificado:} 978-1-492-08689-5 \\
+\textbf{Resumen:} Me gustó mucho el enfoque de este libro porque va directo a "las partes difíciles" de la arquitectura. En lugar de decir que lo distribuido siempre es la solución a todo, los autores te muestran las compensaciones (trade-offs) que tienes que hacer. Hablan de problemas muy reales, como qué pasa con la integridad de los datos cuando los divides en bases de datos separadas, y recomiendan patrones como Saga para mantener la consistencia sin que la red se vuelva un cuello de botella. \\
+\textbf{Dato concreto:} Al analizar el manejo de datos, la obra enfatiza que "el patrón Saga es el mecanismo preferido y más robusto para mantener la consistencia eventual entre múltiples microservicios sin depender de bloqueos de bases de datos centralizadas" (Capítulo 7: Managing Distributed Transactions, p. 185). \\
+\textbf{Nota personal:} Me viene genial para la sección de análisis crítico del TA-IND-01. Usaré el concepto de "trade-offs" que mencionan aquí para juzgar si las decisiones que tomaron los arquitectos de mi caso de estudio fueron realmente las mejores.
+
+\printbibliography
+
+\end{document}
